@@ -2,6 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/app_colors.dart';
 
+/// Tolerant date parser: handles DateTime, epoch millis (int), and Firestore
+/// `Timestamp` (via its `.toDate()` method, called dynamically so this file
+/// never needs to import cloud_firestore).
+DateTime parseDate(dynamic v) {
+  if (v == null) return DateTime.now();
+  if (v is DateTime) return v;
+  if (v is int) return DateTime.fromMillisecondsSinceEpoch(v);
+  try {
+    return (v as dynamic).toDate() as DateTime;
+  } catch (_) {
+    return DateTime.now();
+  }
+}
+
 enum UserRole { client, admin }
 
 class AppUser {
@@ -26,6 +40,21 @@ class AppUser {
             parts.last.characters.first.toString())
         .toUpperCase();
   }
+
+  Map<String, dynamic> toMap() => {
+        'name': name,
+        'email': email,
+        'role': role.name,
+        'avatarUrl': avatarUrl,
+      };
+
+  factory AppUser.fromMap(String id, Map<String, dynamic> data) => AppUser(
+        id: id,
+        name: (data['name'] ?? '') as String,
+        email: (data['email'] ?? '') as String,
+        role: data['role'] == 'admin' ? UserRole.admin : UserRole.client,
+        avatarUrl: data['avatarUrl'] as String?,
+      );
 }
 
 /// A top-level service category (IT or Creative).
@@ -96,6 +125,11 @@ class ServiceTier {
 
 enum OrderStatus { pending, inReview, inProgress, delivered, completed, cancelled }
 
+OrderStatus orderStatusFromName(String? name) => OrderStatus.values.firstWhere(
+      (s) => s.name == name,
+      orElse: () => OrderStatus.pending,
+    );
+
 extension OrderStatusX on OrderStatus {
   String get label => switch (this) {
         OrderStatus.pending => 'Pending',
@@ -129,6 +163,7 @@ class PreOrder {
   final String id;
   final String serviceTitle;
   final String tierName;
+  final String clientId;
   final String clientName;
   final double amount;
   final DateTime createdAt;
@@ -140,6 +175,7 @@ class PreOrder {
     required this.id,
     required this.serviceTitle,
     required this.tierName,
+    this.clientId = '',
     required this.clientName,
     required this.amount,
     required this.createdAt,
@@ -147,6 +183,31 @@ class PreOrder {
     required this.status,
     required this.brief,
   });
+
+  Map<String, dynamic> toMap() => {
+        'serviceTitle': serviceTitle,
+        'tierName': tierName,
+        'clientId': clientId,
+        'clientName': clientName,
+        'amount': amount,
+        'createdAt': createdAt,
+        'dueDate': dueDate,
+        'status': status.name,
+        'brief': brief,
+      };
+
+  factory PreOrder.fromMap(String id, Map<String, dynamic> data) => PreOrder(
+        id: id,
+        serviceTitle: (data['serviceTitle'] ?? '') as String,
+        tierName: (data['tierName'] ?? '') as String,
+        clientId: (data['clientId'] ?? '') as String,
+        clientName: (data['clientName'] ?? '') as String,
+        amount: (data['amount'] ?? 0).toDouble(),
+        createdAt: parseDate(data['createdAt']),
+        dueDate: parseDate(data['dueDate']),
+        status: orderStatusFromName(data['status'] as String?),
+        brief: (data['brief'] ?? '') as String,
+      );
 }
 
 class ChatMessage {
@@ -163,6 +224,21 @@ class ChatMessage {
     required this.time,
     this.read = true,
   });
+
+  /// Build from a Firestore message doc. `fromMe` is derived by comparing the
+  /// stored `senderId` against the current viewer's uid.
+  factory ChatMessage.fromMap(
+    String id,
+    Map<String, dynamic> data,
+    String currentUserId,
+  ) =>
+      ChatMessage(
+        id: id,
+        text: (data['text'] ?? '') as String,
+        fromMe: (data['senderId'] ?? '') == currentUserId,
+        time: parseDate(data['time']),
+        read: (data['read'] ?? true) as bool,
+      );
 }
 
 class ChatThread {
@@ -180,6 +256,22 @@ class ChatThread {
     this.online = false,
   });
 
-  ChatMessage get last => messages.last;
+  ChatMessage get last => messages.isEmpty
+      ? ChatMessage(
+          id: '_',
+          text: '',
+          fromMe: false,
+          time: DateTime.fromMillisecondsSinceEpoch(0),
+        )
+      : messages.last;
+
   int get unread => messages.where((m) => !m.fromMe && !m.read).length;
+
+  ChatThread copyWith({List<ChatMessage>? messages}) => ChatThread(
+        id: id,
+        name: name,
+        subtitle: subtitle,
+        online: online,
+        messages: messages ?? this.messages,
+      );
 }

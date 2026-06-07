@@ -46,10 +46,16 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final thread = context
-        .watch<AppState>()
-        .threads
-        .firstWhere((t) => t.id == widget.threadId);
+    final threads = context.watch<AppState>().threads;
+    final thread = threads.firstWhere(
+      (t) => t.id == widget.threadId,
+      orElse: () => const ChatThread(
+        id: '',
+        name: 'Keyframes Team',
+        subtitle: '',
+        messages: [],
+      ),
+    );
 
     return Scaffold(
       backgroundColor: AppColors.offWhite,

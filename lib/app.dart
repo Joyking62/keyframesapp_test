@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'core/theme/app_theme.dart';
+import 'data/repositories/repositories.dart';
 import 'features/admin/admin_shell.dart';
 import 'features/auth/auth_screen.dart';
 import 'features/client/client_shell.dart';
@@ -15,7 +16,7 @@ class KeyframesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => AppState(),
+      create: (_) => AppState(Repositories.create()),
       child: MaterialApp(
         title: 'Keyframes',
         debugShowCheckedModeBanner: false,

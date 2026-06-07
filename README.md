@@ -102,14 +102,91 @@ lib/
 
 ---
 
-## Wiring a real backend
-The app is intentionally backend-agnostic. `AppState` is the single integration
-point — replace the mocked methods with your provider of choice:
+## Backend: demo data or Firebase
 
-- **Auth** → Firebase Auth / your API in `login`, `register`, `logout`.
-- **Orders** → Firestore / REST in `placePreOrder`, `updateOrderStatus`.
-- **Chat** → Firestore streams / WebSocket in `sendMessage` + thread loading.
-- Swap `MockData` seeds for live queries.
+The app ships with a clean **repository layer** (`lib/data/repositories/`) and a
+**single switch** in `lib/core/app_config.dart`:
+
+```dart
+const bool kUseFirebase = false; // false = demo data, true = Firebase
+```
+
+- **`false` (default):** uses built-in demo data. No setup — perfect for previewing
+  the UI. Login is simulated (any email/password works; toggle "Admin login" for
+  the admin console).
+- **`true`:** uses **Firebase Auth** (real accounts) and **Cloud Firestore**
+  (real orders + chat that sync live across devices).
+
+`AppState` talks only to the repositories, so flipping the switch changes the data
+source without touching any UI code.
+
+### Firebase setup (step by step)
+
+1. **Create a Firebase project** at <https://console.firebase.google.com>.
+2. **Enable Authentication** → Sign-in method → turn on **Email/Password**.
+3. **Create a Cloud Firestore database** (start in *production* mode).
+4. **Install the FlutterFire CLI** and link your project — this generates the real
+   `lib/firebase_options.dart` and the native config files:
+   ```bash
+   dart pub global activate flutterfire_cli
+   flutterfire configure
+   ```
+5. **Turn the switch on:** set `kUseFirebase = true` in `lib/core/app_config.dart`.
+6. `flutter pub get` then `flutter run`.
+
+> Admin access: the in-app "Admin login" toggle is ignored in Firebase mode.
+> A user becomes an admin when their `users/{uid}` document has `role: "admin"`.
+> Set that field manually in the Firebase console for your own account.
+
+### Firestore data model
+```
+users/{uid}        { name, email, role: "client"|"admin", avatarUrl }
+orders/{orderId}   { serviceTitle, tierName, clientId, clientName, amount,
+                     createdAt, dueDate, status, brief }
+chats/{threadId}   { participants: [uid...], clientName, subtitle, online,
+                     lastText, lastTime }
+  messages/{msgId} { text, senderId, time, read }
+```
+
+### Required Firestore indexes
+Two filtered+ordered queries need composite indexes. The first time you run them,
+Firestore prints a console link that creates the index in one click. They are:
+- `orders`: `clientId ==` + `createdAt desc`
+- `chats`: `participants array-contains` + `lastTime desc`
+
+### Starter security rules
+Paste into **Firestore → Rules** (tighten further for production):
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    match /users/{uid} {
+      allow read: if isSignedIn();
+      allow write: if request.auth.uid == uid;
+    }
+
+    match /orders/{orderId} {
+      allow read: if isAdmin() || resource.data.clientId == request.auth.uid;
+      allow create: if isSignedIn() && request.resource.data.clientId == request.auth.uid;
+      allow update: if isAdmin() || resource.data.clientId == request.auth.uid;
+    }
+
+    match /chats/{threadId} {
+      allow read, update: if isAdmin() || request.auth.uid in resource.data.participants;
+      allow create: if isSignedIn();
+      match /messages/{msgId} {
+        allow read, create: if isSignedIn();
+      }
+    }
+  }
+}
+```
 
 ---
 
@@ -117,3 +194,6 @@ point — replace the mocked methods with your provider of choice:
 - Fonts load via `google_fonts` (downloaded at first run). To ship fully offline,
   bundle the TTFs and enable the `fonts:` block in `pubspec.yaml`.
 - No paid/3rd-party chart library is used — the revenue chart is hand-drawn.
+- The services **catalog** (categories, packages, prices) is defined in
+  `lib/data/mock_data.dart`. Move it to Firestore too if you want to edit it
+  without shipping an app update.

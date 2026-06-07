@@ -31,13 +31,12 @@ class _PreOrderScreenState extends State<PreOrderScreen> {
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _submitting = true);
-    await Future.delayed(const Duration(milliseconds: 700));
-    if (!mounted) return;
-    context.read<AppState>().placePreOrder(
+    await context.read<AppState>().placePreOrder(
           service: widget.service,
           tier: widget.tier,
           brief: _brief.text,
         );
+    if (!mounted) return;
     setState(() => _submitting = false);
     _showSuccess();
   }

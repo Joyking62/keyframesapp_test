@@ -1,0 +1,1287 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Scaffold project, dependencies, and asset/config plumbing": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927507
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810934886
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811133216
+      }
+    ],
+    "2.1 Implement color, spacing, radius, and elevation tokens": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927511
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811139773
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811314760
+      }
+    ],
+    "2.2 Implement typography and global ThemeData": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927516
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811323561
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811961078
+      }
+    ],
+    "3.1 Implement domain enums and validators": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927524
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811141225
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811315784
+      }
+    ],
+    "3.2 Implement the shared Result/AsyncValue error wrapper and input sanitizer": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927531
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811141328
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811316507
+      }
+    ],
+    "4.1 Implement AppUser, ServiceListing, and Order family models": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927537
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811323927
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811962048
+      }
+    ],
+    "4.2 Implement Conversation and Message models plus input DTOs": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927545
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811324050
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811962919
+      }
+    ],
+    "5. Define repository interfaces (domain layer)": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927548
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812011831
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812665271
+      }
+    ],
+    "6.1 Implement isValidTransition and status-timeline append logic": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927550
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812680455
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812920641
+      }
+    ],
+    "6.2 Implement pre-order draft validation": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927553
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812681429
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812921667
+      }
+    ],
+    "7.1 Implement Hive catalog cache and shared_preferences flags": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927556
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812012642
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812665998
+      }
+    ],
+    "8.1 Implement AuthRepository (Firebase Auth + Google) with role resolution": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927559
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812928414
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780813261657
+      }
+    ],
+    "8.2 Implement ServiceRepository (Firestore) with cache fallback": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927562
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812929453
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780813262463
+      }
+    ],
+    "8.3 Implement OrderRepository (Firestore) wired to the order service": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927567
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812931900
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780813264428
+      }
+    ],
+    "8.4 Implement ChatRepository (Firestore) with unread accounting": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927570
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812932171
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780813264726
+      }
+    ],
+    "9. Wire Riverpod providers and dependency injection": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927572
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206884
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815396741
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815657124
+      }
+    ],
+    "10.1 Implement bootstrap() and resolveInitialRoute()": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927576
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206887
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815666314
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816335619
+      }
+    ],
+    "10.2 Implement go_router with _authRoleGuard and shell routes": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927579
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206890
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815667070
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816336621
+      }
+    ],
+    "10.3 Wire MaterialApp.router and theme in app.dart": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927582
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206893
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815670105
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816337620
+      }
+    ],
+    "11. Checkpoint - core, data layer, and routing": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927585
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206896
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816578123
+      }
+    ],
+    "12.1 Implement reusable animation builders": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927589
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206899
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815397737
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815658110
+      }
+    ],
+    "12.2 Implement shared widgets": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927592
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206902
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815398758
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815658192
+      }
+    ],
+    "13.1 Implement SplashAnimator and buildDepthTransform": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927595
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206905
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815670818
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816338544
+      }
+    ],
+    "13.2 Build the SplashScreen widget tree and navigation": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927598
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206908
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816579116
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816925900
+      }
+    ],
+    "14.1 Build the onboarding pages and parallax": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927601
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206911
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816580175
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816927858
+      }
+    ],
+    "15.1 Build login and register screens with AuthController": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927604
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206914
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816581246
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816928892
+      }
+    ],
+    "16.1 Implement CatalogController and home/catalog UI": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927607
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206916
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816583684
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816928998
+      }
+    ],
+    "16.2 Implement loading, empty, offline, and staggered-entrance states": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927611
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206919
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816938062
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817261889
+      }
+    ],
+    "17.1 Build the service detail screen": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927614
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206922
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816939048
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817262905
+      }
+    ],
+    "18.1 Implement PreOrderController and the three-step UI": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927617
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206925
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817286471
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817874014
+      }
+    ],
+    "18.2 Wire submission, success, and failure recovery": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927620
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206927
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817287470
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817875168
+      }
+    ],
+    "19.1 Implement ChatController and the chat screen": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927622
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206930
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817288474
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817876181
+      }
+    ],
+    "19.2 Wire send, well-formedness, animations, and attachment retry": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927625
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206933
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817290440
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817877294
+      }
+    ],
+    "20.1 Build the orders, order-detail, and profile views": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927628
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206936
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817290549
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817879418
+      }
+    ],
+    "21. Checkpoint - client-facing features": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927632
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206939
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817905034
+      }
+    ],
+    "22.1 Build the admin overview with count-up KPIs": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927635
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206942
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817895274
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818382132
+      }
+    ],
+    "22.2 Build admin orders management with status updates": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927637
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206945
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817896228
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818383131
+      }
+    ],
+    "22.3 Build admin chats with unread badges": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927640
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206955
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817896968
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818384130
+      }
+    ],
+    "22.4 Build admin listings CRUD": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927643
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206958
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817897553
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818384607
+      }
+    ],
+    "23.1 Audit routes, screens, and models for no per-employee surface": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927645
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206962
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818428858
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819007435
+      }
+    ],
+    "24.1 Wire offline-first recovery and connectivity retry": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927648
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206964
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818427816
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819008977
+      }
+    ],
+    "25. Final checkpoint - full test suite": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780810927652
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815206967
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819707001
+      }
+    ],
+    "3. Define core enums, validators, and the Result/error utilities": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811316510
+      }
+    ],
+    "2. Build the design system (theme tokens, typography, spacing)": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811961082
+      }
+    ],
+    "4. Implement freezed data models with JSON serialization": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780811962921
+      }
+    ],
+    "2.3 Write unit tests for theme tokens and text styles": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812004566
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812662246
+      }
+    ],
+    "3.3 Write unit tests for validators and sanitizer": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812005607
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812663263
+      }
+    ],
+    "4.3 Write property test for model serialization round-trip": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812005935
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812664261
+      }
+    ],
+    "7. Implement local cache (Hive) and preferences source": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812666002
+      }
+    ],
+    "7.2 Write unit tests for local source": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812676222
+      },
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812922270
+      }
+    ],
+    "6. Implement the order status state machine and pre-order validation logic": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780812921671
+      }
+    ],
+    "8. Implement Firebase remote sources and repository implementations": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780813264729
+      }
+    ],
+    "8.5 Write property test for message well-formedness": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780813273778
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815202084
+      }
+    ],
+    "8.6 Write property test for unread accuracy": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780813274785
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815203401
+      }
+    ],
+    "8.7 Write unit tests for repository implementations": [
+      {
+        "executionId": "6e8f55ba-86a1-4fd7-a3ff-b927e78a0fb0",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780813275699
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815203977
+      }
+    ],
+    "6.3 Write property test for order status monotonicity": [
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815224965
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815230208
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815389090
+      }
+    ],
+    "6.4 Write property test for valid-transitions-only": [
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815226023
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815231186
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815390067
+      }
+    ],
+    "6.5 Write property test for pre-order validity": [
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815226139
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815233263
+      },
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815390795
+      }
+    ],
+    "12. Build the animation system and shared widgets": [
+      {
+        "executionId": "63454ff5-a541-41ea-a0c8-9bfd8321fd78",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780815658195
+      }
+    ],
+    "10. Implement bootstrap and the go_router with role guards": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816337623
+      }
+    ],
+    "10.4 Write unit tests for resolveInitialRoute": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816359201
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816558400
+      }
+    ],
+    "10.5 Write property test for role isolation": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816361118
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816559419
+      }
+    ],
+    "12.3 Write widget tests for shared widgets": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816362143
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816559992
+      }
+    ],
+    "13. Implement the 3D-depth animated splash / preloader": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816925903
+      }
+    ],
+    "14. Implement onboarding": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816927861
+      }
+    ],
+    "15. Implement authentication UI and controllers": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780816928895
+      }
+    ],
+    "16. Implement the service catalog": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817261892
+      }
+    ],
+    "17. Implement service detail": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817262909
+      }
+    ],
+    "16.3 Write widget tests for catalog states": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817284461
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817872613
+      }
+    ],
+    "17.2 Write widget test for service detail CTA": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817285454
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817873263
+      }
+    ],
+    "18. Implement the multi-step pre-order flow": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817875172
+      }
+    ],
+    "19. Implement the real-time chat portal": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817877297
+      }
+    ],
+    "20. Implement the client dashboard and order tracking": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817879421
+      }
+    ],
+    "18.3 Write widget tests for pre-order validation and success": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817890274
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818379138
+      }
+    ],
+    "19.3 Write widget test for chat send": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817891349
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818380131
+      }
+    ],
+    "20.2 Write widget test for client-scoped orders and empty state": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780817892396
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818381131
+      }
+    ],
+    "22. Implement the admin dashboard": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818384611
+      }
+    ],
+    "23.2 Write property test for no employee-hiring surface": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818429844
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819008412
+      }
+    ],
+    "22.5 Write widget tests for admin orders and listings": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780818430312
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819428886
+      }
+    ],
+    "23. Enforce the service-centric marketplace boundary": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819007439
+      }
+    ],
+    "24. Final integration, offline recovery, and end-to-end wiring": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819008980
+      }
+    ],
+    "24.2 Write integration tests for happy paths": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819015406
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819429001
+      }
+    ],
+    "13.3 Write property test for splash determinism": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819448170
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819700016
+      }
+    ],
+    "13.4 Write widget test for splash auto-navigation": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819448930
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819701041
+      }
+    ],
+    "14.2 Write widget test for onboarding completion": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819449926
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819702029
+      }
+    ],
+    "15.2 Write widget tests for auth flows": [
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819450631
+      },
+      {
+        "executionId": "da9cc3c8-fae7-49b2-9df2-1d7f9210ca39",
+        "chatSessionId": "074bdfa4-6844-48e2-b6f6-350fae76d264",
+        "timestamp": 1780819702595
+      }
+    ]
+  }
+}

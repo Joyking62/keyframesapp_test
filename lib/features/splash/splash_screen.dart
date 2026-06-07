@@ -1,265 +1,487 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_typography.dart';
-import '../../widgets/animated_background.dart';
-import '../../widgets/brand_logo.dart';
+import 'package:keyframes_app/app/providers.dart';
+import 'package:keyframes_app/core/theme/k_colors.dart';
+import 'package:keyframes_app/core/theme/k_space.dart';
+import 'package:keyframes_app/core/theme/k_text_styles.dart';
+import 'package:keyframes_app/data/models/bootstrap_result.dart';
+import 'package:keyframes_app/features/splash/bootstrap.dart';
+import 'package:keyframes_app/features/splash/splash_animator.dart';
+import 'package:keyframes_app/features/splash/splash_navigation.dart';
 
-/// Cinematic 3D preloader.
+/// The 3D-depth animated splash / preloader (Requirement 2).
 ///
-/// Sequence (≈3.2s):
-///  1) Logo flies in from depth with perspective Y-rotation + scale.
-///  2) Amber glow pulses; subtle continuous float/tilt (parallax 3D feel).
-///  3) Wordmark "KEYFRAMES" reveals letter-spacing + fades in.
-///  4) Tagline + loading shimmer bar fill, then [onFinish] fires.
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key, required this.onFinish});
-
-  final VoidCallback onFinish;
+/// Composes the layered visual stack described in the design's "3D-Depth
+/// Animated Splash / Preloader" section:
+///
+/// 1. [_RadialNavyBackground] — a navy900 -> navy600 radial gradient backdrop.
+/// 2. [_ParallaxGlowLayer] — soft amber blur orbs that drift with the idle
+///    sway for a parallax depth cue.
+/// 3. The 3D logo — `Image.asset('assets/images/keyframes_logo.png')` wrapped
+///    in a [Transform] driven by [buildDepthTransform] (perspective scale +
+///    translateZ entrance and X/Y tilt sway), with an amber pulsing-nodes
+///    [CustomPaint] overlay.
+/// 4. The brand wordmark "KEYFRAMES" ([KTextStyles.displayLg], white) that
+///    slides up and fades in via the animator's `wordmark` animation.
+/// 5. [_ShimmerProgressBar] — a bottom amber shimmer indicating bootstrap
+///    progress.
+///
+/// ## Navigation contract (Requirements 2.5, 2.6 — "splash determinism")
+///
+/// The splash leaves **exactly once**, and only after BOTH of the following
+/// have happened:
+///
+/// * the entrance animation has completed, AND
+/// * [bootstrapProvider] has resolved to a [BootstrapResult].
+///
+/// A single `_navigated` guard makes the transition idempotent regardless of
+/// which event lands last (or whether the widget rebuilds in between). Both
+/// triggers funnel through [_tryRedirect], which only proceeds when every
+/// precondition is met; the actual navigation happens in [redirectAfterSplash]
+/// via `context.go(resolveInitialRoute(result))`.
+///
+/// If bootstrap resolves to an **error**, the splash stays put (it never
+/// navigates) and surfaces a small, non-blocking error indication
+/// (Requirement 17.4) while the underlying provider can be retried.
+class SplashScreen extends ConsumerStatefulWidget {
+  /// Creates the animated splash screen.
+  const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
+class _SplashScreenState extends ConsumerState<SplashScreen>
+    // Two controllers (entrance + sway) live inside [SplashAnimator], so the
+    // State must vend multiple tickers.
     with TickerProviderStateMixin {
-  late final AnimationController _intro; // one-shot entrance
-  late final AnimationController _idle; // looping float/tilt
-  late final Animation<double> _logoScale;
-  late final Animation<double> _logoRotateY;
-  late final Animation<double> _logoOpacity;
-  late final Animation<double> _wordmark;
-  late final Animation<double> _progress;
+  /// Owns the entrance + idle-sway controllers and derived animations.
+  late final SplashAnimator _animator;
+
+  /// Slides the wordmark up as it fades in (paired with `_animator.wordmark`).
+  late final Animation<Offset> _wordmarkSlide;
+
+  /// Pure state machine that funnels the two navigation triggers (entrance
+  /// completion and bootstrap resolution) into a single, idempotent
+  /// "navigate exactly once" decision (Requirements 2.5, 2.6). Keeping the
+  /// decision here — rather than in loose bools — means the widget and the
+  /// property-tested [SplashNavigationGate] can never diverge.
+  final SplashNavigationGate _gate = SplashNavigationGate();
 
   @override
   void initState() {
     super.initState();
+    _animator = SplashAnimator(vsync: this);
+    _wordmarkSlide = Tween<Offset>(
+      begin: const Offset(0, 0.4),
+      end: Offset.zero,
+    ).animate(_animator.wordmark);
 
-    _intro = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 3000),
-    );
-    _idle = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..repeat(reverse: true);
-
-    _logoOpacity = CurvedAnimation(
-      parent: _intro,
-      curve: const Interval(0.0, 0.25, curve: Curves.easeOut),
-    );
-    _logoScale = Tween<double>(begin: 0.3, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _intro,
-        curve: const Interval(0.0, 0.55, curve: Curves.easeOutBack),
-      ),
-    );
-    _logoRotateY = Tween<double>(begin: math.pi, end: 0).animate(
-      CurvedAnimation(
-        parent: _intro,
-        curve: const Interval(0.05, 0.6, curve: Curves.easeOutCubic),
-      ),
-    );
-    _wordmark = CurvedAnimation(
-      parent: _intro,
-      curve: const Interval(0.55, 0.85, curve: Curves.easeOut),
-    );
-    _progress = CurvedAnimation(
-      parent: _intro,
-      curve: const Interval(0.6, 1.0, curve: Curves.easeInOut),
-    );
-
-    _intro.forward().whenComplete(() {
-      Future.delayed(const Duration(milliseconds: 250), widget.onFinish);
-    });
+    // Mark entrance completion and attempt navigation (bootstrap may already
+    // be resolved by the time the animation lands).
+    _animator.entrance.addStatusListener(_onEntranceStatus);
+    _animator.start();
   }
 
   @override
   void dispose() {
-    _intro.dispose();
-    _idle.dispose();
+    _animator.entrance.removeStatusListener(_onEntranceStatus);
+    _animator.dispose();
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: AnimatedAuroraBackground(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Spacer(flex: 3),
-              // ---- 3D logo ----
-              AnimatedBuilder(
-                animation: Listenable.merge([_intro, _idle]),
-                builder: (context, _) {
-                  final floatT = math.sin(_idle.value * math.pi * 2);
-                  final idleTilt = floatT * 0.18; // gentle yaw
-                  final idleFloat = floatT * 6; // vertical bob
-                  return Opacity(
-                    opacity: _logoOpacity.value,
-                    child: Transform.translate(
-                      offset: Offset(0, idleFloat),
-                      child: Transform(
-                        alignment: Alignment.center,
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.0014) // perspective
-                          ..rotateX(0.12 * floatT)
-                          ..rotateY(_logoRotateY.value + idleTilt)
-                          ..scale(_logoScale.value),
-                        child: _LogoStack(glowT: (floatT + 1) / 2),
-                      ),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 34),
-              // ---- Wordmark ----
-              AnimatedBuilder(
-                animation: _wordmark,
-                builder: (context, _) {
-                  return Opacity(
-                    opacity: _wordmark.value,
-                    child: Transform.translate(
-                      offset: Offset(0, 16 * (1 - _wordmark.value)),
-                      child: Text(
-                        'KEYFRAMES',
-                        style: AppTypography.wordmark(
-                          size: 28,
-                          color: AppColors.white,
-                        ).copyWith(
-                          letterSpacing: 4 + 6 * _wordmark.value,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 8),
-              AnimatedBuilder(
-                animation: _wordmark,
-                builder: (context, _) => Opacity(
-                  opacity: _wordmark.value,
-                  child: Text(
-                    'Design · Develop · Deliver',
-                    style: TextStyle(
-                      color: AppColors.amberBright,
-                      fontSize: 12.5,
-                      letterSpacing: 2,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ),
-              const Spacer(flex: 3),
-              // ---- Progress bar ----
-              AnimatedBuilder(
-                animation: _progress,
-                builder: (context, _) => _ProgressBar(value: _progress.value),
-              ),
-              const SizedBox(height: 18),
-              AnimatedBuilder(
-                animation: _progress,
-                builder: (context, _) => Opacity(
-                  opacity: _progress.value,
-                  child: const Text(
-                    'Crafting your experience…',
-                    style: TextStyle(color: Colors.white60, fontSize: 12),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 48),
-            ],
-          ),
-        ),
-      ),
-    );
+  void _onEntranceStatus(AnimationStatus status) {
+    if (status == AnimationStatus.completed && !_gate.entranceComplete) {
+      _gate.onEntranceComplete();
+      _tryRedirect();
+    }
   }
-}
 
-/// Layered logo to emphasise depth: a soft dropped "shadow" copy behind the
-/// crisp brand mark, sitting inside an amber glow ring.
-class _LogoStack extends StatelessWidget {
-  const _LogoStack({required this.glowT});
-  final double glowT;
+  /// Funnels both navigation triggers (entrance-complete and bootstrap-resolve)
+  /// through a single guarded check so the splash leaves exactly once and only
+  /// after both preconditions hold (Requirements 2.5, 2.6).
+  void _tryRedirect() {
+    if (_gate.navigations > 0 || !_gate.entranceComplete) {
+      return;
+    }
+    final BootstrapResult? result = ref.read(bootstrapProvider).valueOrNull;
+    if (result == null) {
+      // Bootstrap not resolved yet (still loading) or resolved to an error —
+      // either way we stay on the splash.
+      return;
+    }
+    redirectAfterSplash(result);
+  }
+
+  /// Performs the one-and-only navigation to the resolved initial route.
+  ///
+  /// Mirrors the design's `redirectAfterSplash(BootstrapResult r)`: it maps the
+  /// bootstrap result to a route via the pure [resolveInitialRoute] and issues
+  /// a single `context.go`. Both the early-return guard and the
+  /// [SplashNavigationGate] make repeated calls no-ops.
+  void redirectAfterSplash(BootstrapResult result) {
+    if (_gate.navigations > 0) {
+      return;
+    }
+    // Record the bootstrap-resolve trigger; the gate increments its navigation
+    // count exactly once now that both preconditions hold.
+    _gate.onBootstrapResolved();
+    if (_gate.navigations == 1 && mounted) {
+      context.go(resolveInitialRoute(result));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 180,
-      height: 180,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Glow halo
-          Container(
-            width: 160,
-            height: 160,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.amber.withOpacity(0.25 + 0.20 * glowT),
-                  blurRadius: 60 + 20 * glowT,
-                  spreadRadius: 4,
+    // React to bootstrap resolving *after* the entrance completes. `listen`
+    // (not `watch`) keeps navigation a one-shot side effect.
+    ref.listen<AsyncValue<BootstrapResult>>(bootstrapProvider, (_, next) {
+      if (next.hasValue) {
+        _tryRedirect();
+      }
+    });
+
+    final bool hasError = ref.watch(bootstrapProvider).hasError;
+
+    return Scaffold(
+      backgroundColor: KColors.navy900,
+      body: Stack(
+        children: <Widget>[
+          // 1. Navy radial gradient backdrop.
+          const Positioned.fill(child: _RadialNavyBackground()),
+
+          // 2. Parallax amber glow orbs driven by the idle sway.
+          Positioned.fill(
+            child: _ParallaxGlowLayer(sway: _animator.sway),
+          ),
+
+          // 3. The 3D-transformed logo with pulsing amber nodes.
+          Center(
+            child: AnimatedBuilder(
+              animation: Listenable.merge(<Listenable>[
+                _animator.entrance,
+                _animator.sway,
+              ]),
+              builder: (BuildContext context, Widget? child) {
+                return Transform(
+                  alignment: Alignment.center,
+                  transform: buildDepthTransform(
+                    depth: _animator.depth.value,
+                    tiltX: _animator.tiltX.value,
+                    tiltY: _animator.tiltY.value,
+                  ),
+                  child: child,
+                );
+              },
+              child: _LogoWithPulsingNodes(
+                reveal: _animator.reveal,
+                pulse: _animator.sway,
+              ),
+            ),
+          ),
+
+          // 4. Brand wordmark — slides up + fades in near the end of entrance.
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 150,
+            child: FadeTransition(
+              opacity: _animator.wordmark,
+              child: SlideTransition(
+                position: _wordmarkSlide,
+                child: Text(
+                  'KEYFRAMES',
+                  textAlign: TextAlign.center,
+                  style: KTextStyles.displayLg.copyWith(
+                    color: KColors.white,
+                    letterSpacing: 6,
+                  ),
                 ),
-                BoxShadow(
-                  color: AppColors.navy500.withOpacity(0.5),
-                  blurRadius: 40,
-                  spreadRadius: -6,
-                ),
+              ),
+            ),
+          ),
+
+          // 5. Bottom shimmer progress + (optional) error indication.
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 64,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const _ShimmerProgressBar(),
+                if (hasError) ...<Widget>[
+                  const SizedBox(height: KSpace.md),
+                  Text(
+                    'Something went wrong. Retrying…',
+                    textAlign: TextAlign.center,
+                    style: KTextStyles.caption.copyWith(
+                      color: KColors.amber300,
+                    ),
+                  ),
+                ],
               ],
             ),
           ),
-          // Depth shadow copy (pushed back)
-          Transform.translate(
-            offset: const Offset(8, 10),
-            child: Opacity(
-              opacity: 0.35,
-              child: ColorFiltered(
-                colorFilter: const ColorFilter.mode(
-                  Colors.black54,
-                  BlendMode.srcATop,
-                ),
-                child: const BrandLogo(size: 132, depth: 1.4),
-              ),
-            ),
-          ),
-          // Crisp front mark
-          const BrandLogo(size: 132, depth: 1.2),
         ],
       ),
     );
   }
 }
 
-class _ProgressBar extends StatelessWidget {
-  const _ProgressBar({required this.value});
-  final double value;
+/// The deep-navy radial gradient backdrop (navy900 -> navy600).
+///
+/// The lighter navy is focused slightly above center so the logo appears to
+/// emerge from a soft pool of light in otherwise-deep navy space.
+class _RadialNavyBackground extends StatelessWidget {
+  const _RadialNavyBackground();
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 180,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
+    return const DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: RadialGradient(
+          center: Alignment(0, -0.15),
+          radius: 1.1,
+          colors: <Color>[KColors.navy600, KColors.navy900],
+          stops: <double>[0.0, 1.0],
+        ),
+      ),
+    );
+  }
+}
+
+/// Soft amber glow orbs that drift with the idle [sway] for a parallax cue.
+///
+/// Two blurred amber radial orbs translate in opposite directions as the sway
+/// controller oscillates, giving the static logo a sense of floating depth.
+class _ParallaxGlowLayer extends StatelessWidget {
+  const _ParallaxGlowLayer({required this.sway});
+
+  /// The looping idle-sway controller (value 0..1).
+  final Animation<double> sway;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: sway,
+      builder: (BuildContext context, _) {
+        // Map the 0..1 sway value to a small symmetric drift.
+        final double drift = (sway.value - 0.5) * 2; // -1..1
+        return Stack(
+          children: <Widget>[
+            Align(
+              alignment: Alignment(-0.6 + drift * 0.1, -0.5 + drift * 0.08),
+              child: const _GlowOrb(
+                diameter: 240,
+                color: KColors.amber500,
+                opacity: 0.18,
+              ),
+            ),
+            Align(
+              alignment: Alignment(0.7 - drift * 0.1, 0.4 - drift * 0.08),
+              child: const _GlowOrb(
+                diameter: 300,
+                color: KColors.amber400,
+                opacity: 0.12,
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// A single soft, blurred amber orb used by [_ParallaxGlowLayer].
+class _GlowOrb extends StatelessWidget {
+  const _GlowOrb({
+    required this.diameter,
+    required this.color,
+    required this.opacity,
+  });
+
+  final double diameter;
+  final Color color;
+  final double opacity;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: diameter,
+      height: diameter,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: RadialGradient(
+          colors: <Color>[
+            color.withOpacity(opacity),
+            color.withOpacity(0),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// The Keyframes logo with an amber "circuit node" pulse overlay.
+///
+/// The logo image fades in via [reveal]; the [pulse] controller staggers a set
+/// of amber nodes (and the lines connecting them) so they shimmer along the
+/// logo like a powering-up circuit.
+class _LogoWithPulsingNodes extends StatelessWidget {
+  const _LogoWithPulsingNodes({required this.reveal, required this.pulse});
+
+  /// Logo opacity reveal (0 -> 1).
+  final Animation<double> reveal;
+
+  /// Drives the staggered amber node pulse (looping 0..1).
+  final Animation<double> pulse;
+
+  static const double _size = 168;
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: reveal,
+      child: SizedBox(
+        width: _size,
+        height: _size,
         child: Stack(
-          children: [
-            Container(height: 5, color: Colors.white.withOpacity(0.12)),
-            FractionallySizedBox(
-              widthFactor: value.clamp(0.0, 1.0),
-              child: Container(
-                height: 5,
-                decoration: const BoxDecoration(
-                  gradient: AppColors.amberGradient,
-                ),
+          alignment: Alignment.center,
+          children: <Widget>[
+            Image.asset(
+              'assets/images/keyframes_logo.png',
+              width: _size,
+              height: _size,
+              fit: BoxFit.contain,
+            ),
+            Positioned.fill(
+              child: AnimatedBuilder(
+                animation: pulse,
+                builder: (BuildContext context, _) {
+                  return CustomPaint(
+                    painter: _PulsingNodesPainter(progress: pulse.value),
+                  );
+                },
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Paints amber circuit nodes (with connecting lines) that pulse in a staggered
+/// loop driven by [progress] (0..1).
+class _PulsingNodesPainter extends CustomPainter {
+  _PulsingNodesPainter({required this.progress});
+
+  /// Loop phase in `[0, 1)` (typically the idle-sway controller value).
+  final double progress;
+
+  /// Node positions expressed as fractions of the paint box.
+  static const List<Offset> _nodes = <Offset>[
+    Offset(0.50, 0.10),
+    Offset(0.84, 0.34),
+    Offset(0.80, 0.74),
+    Offset(0.50, 0.92),
+    Offset(0.20, 0.74),
+    Offset(0.16, 0.34),
+  ];
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final List<Offset> points = <Offset>[
+      for (final Offset n in _nodes) Offset(n.dx * size.width, n.dy * size.height),
+    ];
+
+    // Faint connecting lines forming a ring (the "circuit").
+    final Paint linePaint = Paint()
+      ..color = KColors.amber500.withOpacity(0.16)
+      ..strokeWidth = 1.2
+      ..style = PaintingStyle.stroke;
+    for (int i = 0; i < points.length; i++) {
+      canvas.drawLine(points[i], points[(i + 1) % points.length], linePaint);
+    }
+
+    // Staggered pulsing nodes.
+    for (int i = 0; i < points.length; i++) {
+      final double phase = (progress + i / points.length) % 1.0;
+      final double t = (math.sin(phase * 2 * math.pi) + 1) / 2; // 0..1
+      final double radius = 2.0 + 2.5 * t;
+
+      final Paint glowPaint = Paint()
+        ..color = KColors.amber400.withOpacity(0.25 * t)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4);
+      canvas.drawCircle(points[i], radius + 3, glowPaint);
+
+      final Paint dotPaint = Paint()
+        ..color = KColors.amber500.withOpacity(0.4 + 0.6 * t);
+      canvas.drawCircle(points[i], radius, dotPaint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_PulsingNodesPainter oldDelegate) =>
+      oldDelegate.progress != progress;
+}
+
+/// A bottom progress bar with an amber gradient that sweeps left-to-right,
+/// indicating bootstrap progress while the splash is active.
+class _ShimmerProgressBar extends StatefulWidget {
+  const _ShimmerProgressBar();
+
+  @override
+  State<_ShimmerProgressBar> createState() => _ShimmerProgressBarState();
+}
+
+class _ShimmerProgressBarState extends State<_ShimmerProgressBar>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1500),
+  )..repeat();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 168,
+      height: 4,
+      decoration: BoxDecoration(
+        color: KColors.white.withOpacity(0.08),
+        borderRadius: BorderRadius.circular(KSpace.rPill),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (BuildContext context, _) {
+          final double start = -1.0 + 2.0 * _controller.value;
+          return DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment(start - 0.6, 0),
+                end: Alignment(start + 0.6, 0),
+                colors: <Color>[
+                  KColors.amber500.withOpacity(0.12),
+                  KColors.amber400,
+                  KColors.amber500.withOpacity(0.12),
+                ],
+                stops: const <double>[0.25, 0.5, 0.75],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

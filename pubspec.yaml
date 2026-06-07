@@ -1,54 +1,75 @@
 name: keyframes_app
-description: "Keyframes — IT services & creative design marketplace app (pre-order + chat)."
+description: "Keyframes - a service marketplace mobile app for the Keyframes startup."
 publish_to: "none"
 version: 1.0.0+1
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.6
 
-  # State management
-  provider: ^6.1.2
+  # State management (Riverpod + code-gen)
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
 
-  # Typography (downloads Google Fonts at runtime; can be bundled for offline)
+  # Navigation
+  go_router: ^14.2.0
+
+  # Firebase backend
+  firebase_core: ^3.1.0
+  firebase_auth: ^5.1.0
+  cloud_firestore: ^5.0.1
+  firebase_storage: ^12.0.1
+  firebase_messaging: ^15.0.1
+  google_sign_in: ^6.2.1
+
+  # Models / immutability / serialization
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.9.0
+
+  # Local cache & preferences
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  shared_preferences: ^2.2.3
+
+  # UI / design system
   google_fonts: ^6.2.1
+  flutter_svg: ^2.0.10+1
+  cached_network_image: ^3.3.1
+  flutter_animate: ^4.5.0
 
-  # Onboarding page dots
-  smooth_page_indicator: ^1.1.0
+  # Forms & validation
+  flutter_form_builder: ^9.3.0
+  form_builder_validators: ^11.0.0
 
-  # Date formatting in orders/chat
+  # Media & misc
+  image_picker: ^1.1.2
   intl: ^0.19.0
 
-  # Firebase (Auth + Firestore). The app runs on mock data until you set
-  # kUseFirebase = true in lib/core/app_config.dart and configure a project.
-  firebase_core: ^3.6.0
-  firebase_auth: ^5.3.1
-  cloud_firestore: ^5.4.4
-
 dev_dependencies:
-  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
+
+  # Code generation
+  freezed: ^2.5.2
+  json_serializable: ^6.8.0
+  build_runner: ^2.4.11
+  riverpod_generator: ^2.4.0
+
+  # Testing
+  glados: ^1.1.7
+  mocktail: ^1.0.4
+
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/images/
-    - assets/icons/
-
-  # Optional: bundle your own fonts here for offline use.
-  # fonts:
-  #   - family: Poppins
-  #     fonts:
-  #       - asset: assets/fonts/Poppins-Regular.ttf
-  #       - asset: assets/fonts/Poppins-Medium.ttf
-  #         weight: 500
-  #       - asset: assets/fonts/Poppins-SemiBold.ttf
-  #         weight: 600
-  #       - asset: assets/fonts/Poppins-Bold.ttf
-  #         weight: 700
+    - assets/animations/

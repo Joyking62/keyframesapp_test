@@ -1,28 +1,18 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Keyframes circuit "K" logo (SVG approximation of the brand mark) -->
-  <!-- Colors: dark blue #0B1F4D / #14306E, amber #F5A623 / #FFC23C -->
-
-  <!-- Connector lines -->
-  <path d="M120 120 H230 V200" stroke="#14306E" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M300 330 L392 392" stroke="#F5A623" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-  <!-- Amber K (back layer) -->
-  <path d="M170 150 V362 H210 V285 L300 362 H352 L250 256 L348 150 H300 L210 235 V150 Z"
-        fill="#F5A623"/>
-
-  <!-- Dark blue K (front, offset for depth) -->
-  <path d="M200 130 V300 L320 180 H372 L268 286 L378 392 H322 L226 300 V392 H186 V130 Z"
-        fill="#14306E"/>
-
-  <!-- Top-left diamond node -->
-  <g>
-    <rect x="58" y="86" width="72" height="72" rx="14" transform="rotate(45 94 122)" fill="#F5A623"/>
-    <rect x="74" y="102" width="40" height="40" rx="8" transform="rotate(45 94 122)" fill="#0B1F4D"/>
-  </g>
-
-  <!-- Bottom-right diamond node -->
-  <g>
-    <rect x="382" y="354" width="72" height="72" rx="14" transform="rotate(45 418 390)" fill="#14306E"/>
-    <rect x="398" y="370" width="40" height="40" rx="8" transform="rotate(45 418 390)" fill="#F5A623"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
+  <!-- Placeholder Keyframes logo: navy rounded square with amber keyframe nodes -->
+  <defs>
+    <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A1A3F"/>
+      <stop offset="1" stop-color="#1C3A7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="224" height="224" rx="48" fill="url(#navy)"/>
+  <!-- connecting line -->
+  <path d="M72 128 H184" stroke="#3A5BA0" stroke-width="6" stroke-linecap="round"/>
+  <!-- amber keyframe nodes -->
+  <circle cx="72" cy="128" r="20" fill="#F5A623"/>
+  <circle cx="128" cy="88" r="20" fill="#FFB940"/>
+  <circle cx="184" cy="128" r="20" fill="#F5A623"/>
+  <path d="M128 108 V168" stroke="#3A5BA0" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="128" cy="168" r="20" fill="#FFD27F"/>
 </svg>

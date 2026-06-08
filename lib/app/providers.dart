@@ -189,13 +189,21 @@ final currentUserProvider = Provider<AppUser?>((ref) {
 /// effects; `resolveInitialRoute` (task 10.1) consumes it to choose the route.
 final bootstrapProvider = FutureProvider<BootstrapResult>((ref) async {
   final local = ref.watch(localSourceProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-
   final seenOnboarding = local.seenOnboarding;
-  final user = await authRepository.currentUser();
 
-  // Best-effort, non-blocking catalog preload (Requirements 1.3, 17.1).
-  unawaited(_preloadCatalog(ref));
+  AppUser? user;
+  try {
+    final authRepository = ref.watch(authRepositoryProvider);
+    user = await authRepository.currentUser();
+    // Best-effort, non-blocking catalog preload (only meaningful when the
+    // backend is reachable).
+    unawaited(_preloadCatalog(ref));
+  } catch (_) {
+    // Firebase is not configured/initialized yet (e.g. previewing the app
+    // before `flutterfire configure`). Proceed as a signed-out user so the
+    // splash can still route to onboarding/login and the UI is viewable.
+    user = null;
+  }
 
   return BootstrapResult(seenOnboarding: seenOnboarding, user: user);
 });
